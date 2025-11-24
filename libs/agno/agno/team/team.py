@@ -5408,7 +5408,7 @@ class Team:
         system_message_content: str = ""
         if self.members is not None and len(self.members) > 0:
             system_message_content += "You are the leader of a team and sub-teams of AI Agents.\n"
-            system_message_content += "Your task is to coordinate the team to complete the user's request.\n"
+            system_message_content += "Your task is to route the user request to the correct agent to complete the user's request.\n"
 
             system_message_content += "\nHere are the members in your team:\n"
             system_message_content += "<team_members>\n"
