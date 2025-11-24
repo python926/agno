@@ -33,7 +33,7 @@ classifiers = [
 dependencies = [
   "docstring-parser",
   "gitpython",
-  "h11>=0.16.0",
+  "h11<0.15",  #>=0.16.0
   "httpx[http2]",
   "packaging",
   "pydantic-settings",
