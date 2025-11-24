@@ -5421,15 +5421,15 @@ class Team:
 
             if self.delegate_to_all_members:
                 system_message_content += (
-                    "- You can either respond directly or use the `delegate_task_to_members` tool to delegate a task to all members in your team to get a collaborative response.\n"
-                    "- To delegate a task to all members in your team, call `delegate_task_to_members` ONLY once. This will delegate a task to all members in your team.\n"
+                    # "- You can either respond directly or use the `delegate_task_to_members` tool to delegate a task to all members in your team to get a collaborative response.\n"
+                    # "- To delegate a task to all members in your team, call `delegate_task_to_members` ONLY once. This will delegate a task to all members in your team.\n"
                     "- Analyze the responses from all members and evaluate whether the task has been completed.\n"
                     "- If you feel the task has been completed, you can stop and respond to the user.\n"
                 )
             else:
                 system_message_content += (
-                    "- Your role is to delegate tasks to members in your team with the highest likelihood of completing the user's request.\n"
-                    "- Carefully analyze the tools available to the members and their roles before delegating tasks.\n"
+                    # "- Your role is to delegate tasks to members in your team with the highest likelihood of completing the user's request.\n"
+                    # "- Carefully analyze the tools available to the members and their roles before delegating tasks.\n"
                     "- You cannot use a member tool directly. You can only delegate tasks to members.\n"
                     "- When you delegate a task to another member, make sure to include:\n"
                     "  - member_id (str): The ID of the member to delegate the task to. Use only the ID of the member, not the ID of the team followed by the ID of the member.\n"
@@ -5721,16 +5721,16 @@ class Team:
 
         if self.delegate_to_all_members:
             system_message_content += (
-                "- Your role is to forward tasks to members in your team with the highest likelihood of completing the user's request.\n"
-                "- You can either respond directly or use the `delegate_task_to_members` tool to delegate a task to all members in your team to get a collaborative response.\n"
-                "- To delegate a task to all members in your team, call `delegate_task_to_members` ONLY once. This will delegate a task to all members in your team.\n"
+                # "- Your role is to forward tasks to members in your team with the highest likelihood of completing the user's request.\n"
+                # "- You can either respond directly or use the `delegate_task_to_members` tool to delegate a task to all members in your team to get a collaborative response.\n"
+                # "- To delegate a task to all members in your team, call `delegate_task_to_members` ONLY once. This will delegate a task to all members in your team.\n"
                 "- Analyze the responses from all members and evaluate whether the task has been completed.\n"
                 "- If you feel the task has been completed, you can stop and respond to the user.\n"
             )
         else:
             system_message_content += (
-                "- Your role is to delegate tasks to members in your team with the highest likelihood of completing the user's request.\n"
-                "- Carefully analyze the tools available to the members and their roles before delegating tasks.\n"
+                # "- Your role is to delegate tasks to members in your team with the highest likelihood of completing the user's request.\n"
+                # "- Carefully analyze the tools available to the members and their roles before delegating tasks.\n"
                 "- You cannot use a member tool directly. You can only delegate tasks to members.\n"
                 "- When you delegate a task to another member, make sure to include:\n"
                 "  - member_id (str): The ID of the member to delegate the task to. Use only the ID of the member, not the ID of the team followed by the ID of the member.\n"
@@ -5739,8 +5739,8 @@ class Team:
                 "- You must always analyze the responses from members before responding to the user.\n"
                 "- After analyzing the responses from the members, if you feel the task has been completed, you can stop and respond to the user.\n"
                 "- If you are not satisfied with the responses from the members, you should re-assign the task.\n"
-                "- For simple greetings, thanks, or questions about the team itself, you should respond directly.\n"
-                "- For all work requests, tasks, or questions requiring expertise, route to appropriate team members.\n"
+                # "- For simple greetings, thanks, or questions about the team itself, you should respond directly.\n"
+                # "- For all work requests, tasks, or questions requiring expertise, route to appropriate team members.\n"
             )
         system_message_content += "</how_to_respond>\n\n"
 
@@ -7006,6 +7006,7 @@ class Team:
             member_id: str, task: str
         ) -> Iterator[Union[RunOutputEvent, TeamRunOutputEvent, str]]:
             """Use this function to delegate a task to the selected team member.
+            before delegating the task, ensure that you have called the route() tool.
             You must provide a clear and concise description of the task the member should achieve AND the expected output.
 
             Args:
@@ -7258,6 +7259,7 @@ class Team:
         def delegate_task_to_members(task: str) -> Iterator[Union[RunOutputEvent, TeamRunOutputEvent, str]]:
             """
             Use this function to delegate a task to all the member agents and return a response.
+            before delegating the task, ensure that you have called the route() tool.
             You must provide a clear and concise description of the task the member should achieve AND the expected output.
 
             Args:
@@ -7371,6 +7373,7 @@ class Team:
         async def adelegate_task_to_members(task: str) -> AsyncIterator[Union[RunOutputEvent, TeamRunOutputEvent, str]]:
             """Use this function to delegate a task to all the member agents and return a response.
             You must provide a clear and concise description of the task to send to member agents.
+            before delegating the task, ensure that you have called the route() tool.
 
             Args:
                 task (str): A clear and concise description of the task to send to member agents.
