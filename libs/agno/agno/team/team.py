@@ -5437,9 +5437,9 @@ class Team:
                     "- You can delegate tasks to multiple members at once.\n"
                     "- You must always analyze the responses from members before responding to the user.\n"
                     "- After analyzing the responses from the members, if you feel the task has been completed, you can stop and respond to the user.\n"
-                    "- If you are NOT satisfied with the responses from the members, you should re-assign the task to a different member.\n"
-                    "- For simple greetings, thanks, or questions about the team itself, you should respond directly.\n"
-                    "- For all work requests, tasks, or questions requiring expertise, route to appropriate team members.\n"
+                    # "- If you are NOT satisfied with the responses from the members, you should re-assign the task to a different member.\n"
+                    # "- For simple greetings, thanks, or questions about the team itself, you should respond directly.\n"
+                    # "- For all work requests, tasks, or questions requiring expertise, route to appropriate team members.\n"
                 )
             system_message_content += "</how_to_respond>\n\n"
 
@@ -5735,10 +5735,10 @@ class Team:
                 "- When you delegate a task to another member, make sure to include:\n"
                 "  - member_id (str): The ID of the member to delegate the task to. Use only the ID of the member, not the ID of the team followed by the ID of the member.\n"
                 "  - task (str): A clear description of the task.\n"
-                "- You can delegate tasks to multiple members at once.\n"
-                "- You must always analyze the responses from members before responding to the user.\n"
-                "- After analyzing the responses from the members, if you feel the task has been completed, you can stop and respond to the user.\n"
-                "- If you are not satisfied with the responses from the members, you should re-assign the task.\n"
+                # "- You can delegate tasks to multiple members at once.\n"
+                # "- You must always analyze the responses from members before responding to the user.\n"
+                # "- After analyzing the responses from the members, if you feel the task has been completed, you can stop and respond to the user.\n"
+                # "- If you are not satisfied with the responses from the members, you should re-assign the task.\n"
                 # "- For simple greetings, thanks, or questions about the team itself, you should respond directly.\n"
                 # "- For all work requests, tasks, or questions requiring expertise, route to appropriate team members.\n"
             )
