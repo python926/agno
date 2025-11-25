@@ -6941,6 +6941,29 @@ class Team:
                     team_history_str=team_history_str,
                 )
 
+            # >>> APPEND EXTRA INSTRUCTIONS HERE <<<
+            if isinstance(member_agent_task, str):
+                    extra_instructions_lines = [
+                        "think about the user_query_normalized_output dictionary to understand possible parameters",
+                        "analyze user intent from the query; what is the user asking for?",
+                        "compare user intent to the normalized output from user_query_normalized_output.",
+                        "rules"
+                        "rule 1: remember and identify where user intent aligns to the user_query_normalized_output dictionary for downstream function calls.",
+                        "rule 2: ignore any user_query_normalized_output key values pairs that do not specifically align with user intent.",
+                        "rule 3: remember user_query_normalized_output that return a None value for downstream function calls (they may still be required args).",
+
+                    ]
+
+
+                    extra_instructions_text = "\n".join(extra_instructions_lines)
+
+                    member_agent_task = (
+                        member_agent_task.rstrip()
+                        + "\n\n"
+                        + "Additional instructions for the member agent:\n"
+                        + extra_instructions_text
+                    )
+
             # 7. Add member-level history for the member if enabled (because we won't load the session for the member, so history won't be loaded automatically)
             history = None
             if member_agent.add_history_to_context:
