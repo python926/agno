@@ -6846,17 +6846,22 @@ class Team:
                 - Index of the member in its immediate parent team
                 - The top-level leader agent
         """
+        # Normalize the search ID once (case-insensitive, trimmed)
+        normalized_id = (member_id or "").strip().lower()
+
         # First check direct members
         for i, member in enumerate(self.members):
             url_safe_member_id = get_member_id(member)
-            if url_safe_member_id == member_id:
-                return i, member
+
+            if url_safe_member_id is not None:
+                if url_safe_member_id.strip().lower() == normalized_id:
+                    return i, member
 
             # If this member is a team, search its members recursively
             if isinstance(member, Team):
-                result = member._find_member_by_id(member_id)
+                result = member._find_member_by_id(normalized_id)
                 if result is not None:
-                    # Found in subteam, return with the top-level team member's name
+                    # Found in subteam; return the top-level team/agent reference
                     return i, member
 
         return None
