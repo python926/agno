@@ -6947,7 +6947,6 @@ class Team:
                         "think about the user_query_normalized_output dictionary to understand possible parameters",
                         "analyze user intent from the query; what is the user asking for?",
                         "compare user intent to the normalized output from user_query_normalized_output.",
-                        "rules"
                         "rule 1: remember and identify where user intent aligns to the user_query_normalized_output dictionary for downstream function calls.",
                         "rule 2: ignore any user_query_normalized_output key values pairs that do not specifically align with user intent.",
                         "rule 3: remember user_query_normalized_output that return a None value for downstream function calls (they may still be required args).",
